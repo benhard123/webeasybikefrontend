@@ -1,0 +1,41 @@
+/* Always set the map height explicitly to define the size of the div element that contains the map. */
+#map {
+  height: 60%;
+  width: 80%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+header{
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.Tombolheader{
+  float: right; 
+  padding: 1%; 
+  padding-top: 2%;
+}
+#content{
+  padding-top: 70px;
+  height: 100%
+}
+.login{
+  margin: auto;
+  margin-top: 30%;
+  width: 30%;
+  border: 3px solid green;
+  padding: 10px;
+}
+/* .login_name{
+  
+} */
