@@ -1,6 +1,6 @@
 let map;
 var host = "http://172.17.0.5"
-//alert(window.location.href)
+
 initial()
 
 window.addEventListener('popstate', function(event) {
@@ -8,15 +8,20 @@ window.addEventListener('popstate', function(event) {
 }, false);
 
 function bukalogin(){
-  history.pushState("", "login", "login/");
-  loadDoc()
+  if(window.location.pathname == "/" ){
+    history.pushState("", "login", "login/");
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
+    loadDoc()
+  }
 }
 
 function initial(){
   if(window.location.pathname == "/" ){
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
     loadDoc(fungsi=untukMap)
   }
   else if(window.location.pathname == "/login/"){
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     loadDoc()
   }
   else{
@@ -24,7 +29,7 @@ function initial(){
   }
 }
 
-function loadDoc(fungsi=null, content = "content.html"){
+function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.random() * 100) +""){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -36,7 +41,6 @@ function loadDoc(fungsi=null, content = "content.html"){
     }
     else{
       document.getElementById("content").innerHTML = "error";
-      fungsi()
     }
   };
   xhttp.open("GET", content, true);
@@ -149,7 +153,7 @@ function untukMap(){
   // Create markers.
   for (let i = 0; i < features.length; i++) {
     let infowindow = new google.maps.InfoWindow({
-      content: '<h1>'+i+'</h1>'
+      content: '<h1 class="Judul_peta">'+i+'</h1>'
     });
     let marker = new google.maps.Marker({
       position: features[i].position,
@@ -160,8 +164,29 @@ function untukMap(){
       infowindow.open(map, marker);
     })
   }
+
+  const triangleCoords = [
+    { lat: -6.919095, lng: 107.768934 },
+    { lat: -6.923578, lng: 107.776512 },
+    { lat: -6.929503, lng: 107.773546 },
+    { lat: -6.918095, lng: 107.767934  },
+  ];
+  
+  const bermudaTriangle = new google.maps.Polygon({
+    paths: triangleCoords,
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+  });
+  bermudaTriangle.setMap(map);
 }
 
 function initMap() {
   loadDoc(fungsi = untukMap)  
+}
+
+function loginfunction(){
+  alert(document.getElementsByName("username")[0].value + document.getElementsByName("password")[0].value)
 }

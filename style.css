@@ -17,13 +17,14 @@ header{
   color: white;
   position: fixed;
   top: 0;
+  height: 70px;
   width: 100%;
   z-index: 1000;
 }
 .Tombolheader{
   float: right; 
   padding: 1%; 
-  padding-top: 2%;
+  padding-top: 20px;
 }
 #content{
   padding-top: 70px;
@@ -31,11 +32,37 @@ header{
 }
 .login{
   margin: auto;
-  margin-top: 30%;
-  width: 30%;
+  margin-top: 10%;
+  /* width: 30%; */
+  width: 300px;
   border: 3px solid green;
+  border-radius: 20px;
   padding: 10px;
 }
+.loginbutton{
+  margin-left: 80%;
+}
+
+@media screen and (max-width: 500px){
+  #map {
+    height: 80%;
+    width: 90%;
+  }
+  header{
+    height: 60px;
+  }
+  #content{
+    padding-top: 60px;
+  }
+  .login{
+    margin-top: 40%;
+    width: 80%;
+  }
+  /* .Judul_peta{
+    font-size: 9px;
+  } */
+}
+
 /* .login_name{
   
 } */
