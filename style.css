@@ -1,18 +1,18 @@
 /* Always set the map height explicitly to define the size of the div element that contains the map. */
-#map {
+/* #map {
   height: 60%;
   width: 80%;
-}
+} */
 
 /* Optional: Makes the sample page fill the window. */
-html,
+/* html,
 body {
   font-family: Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-header{
+} */
+/* header{
   background-color: black;
   color: white;
   position: fixed;
@@ -20,16 +20,20 @@ header{
   height: 70px;
   width: 100%;
   z-index: 1000;
+} */
+
+.panel{
+  height:500px;
 }
 .Tombolheader{
   float: right; 
   padding: 1%; 
   padding-top: 20px;
 }
-#content{
+/* #content{
   padding-top: 70px;
   height: 100%
-}
+} */
 .login{
   margin: auto;
   margin-top: 10%;
@@ -44,16 +48,16 @@ header{
 }
 
 @media screen and (max-width: 500px){
-  #map {
+  /* #map {
     height: 80%;
     width: 90%;
   }
   header{
     height: 60px;
-  }
-  #content{
+  } */
+  /* #content{
     padding-top: 60px;
-  }
+  } */
   .login{
     margin-top: 40%;
     width: 80%;

@@ -2,7 +2,7 @@ let map;
 let bikelocation = [];
 
 initial()
-setInterval(lokasiSepeda,2000)
+// setInterval(lokasiSepeda,2000)
 
 window.addEventListener('popstate', function(event) {
   initial()
@@ -44,6 +44,20 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     else{
       document.getElementById("content").innerHTML = "error";
     }
+    var acc = document.getElementsByClassName("accordion");
+		var i;
+		
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+			  panel.style.display = "none";
+			} else {
+			  panel.style.display = "block";
+			}
+		  });
+		}
   };
   xhttp.open("GET", content, true);
   xhttp.send();
