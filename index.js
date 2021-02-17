@@ -9,18 +9,26 @@ window.addEventListener('popstate', function(event) {
 }, false);
 
 function bukalogin(){
-  if(window.location.pathname == "/" ){
-    history.pushState("", "login", "login/");
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
-    loadDoc()
-  }
+  document.getElementsByClassName("latarmap")[0].classList.toggle("fadeOutUp");
+  setTimeout(()=>{
+    if(window.location.pathname == "/" ){
+      history.pushState("", "login", "login/");
+      document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
+      loadDoc()
+    }
+  },1000)
+  // if(window.location.pathname == "/" ){
+  //   history.pushState("", "login", "login/");
+  //   document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
+  //   loadDoc()
+  // }
 }
 
 function initial(){
   if(window.location.pathname == "/" ){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
     loadDoc(fungsi=untukMap)
-    lokasiSepedaInit();
+    // lokasiSepedaInit();
   }
   else if(window.location.pathname == "/login/"){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
@@ -149,12 +157,25 @@ function untukMap(){
     })
   }
 
+  // const koordinatgeofence = [
+  //   { lat: -6.930246, lng: 107.774365 },
+  //   { lat: -6.928944, lng: 107.777785 },
+  //   { lat: -6.919930, lng: 107.774055 },
+  //   { lat: -6.921711, lng: 107.769723 },
+  //   { lat: -6.930246, lng: 107.774365  },
+  // ];
   const koordinatgeofence = [
-    { lat: -6.930246, lng: 107.774365 },
-    { lat: -6.928944, lng: 107.777785 },
+    { lat: -6.932651, lng: 107.772106 },
+    { lat: -6.932191, lng: 107.773204 },
+    { lat: -6.932079, lng: 107.773937 },
+    { lat: -6.931424, lng: 107.776048 },
+    { lat: -6.931418, lng: 107.776363 },
+    { lat: -6.931891, lng: 107.776472 },
     { lat: -6.919930, lng: 107.774055 },
     { lat: -6.921711, lng: 107.769723 },
-    { lat: -6.930246, lng: 107.774365  },
+    { lat: -6.930406, lng: 107.773581 },
+    { lat: -6.930960, lng: 107.771675 },
+    { lat: -6.932651, lng: 107.772106 },
   ];
   const geofence = new google.maps.Polygon({
     paths: koordinatgeofence,
@@ -165,6 +186,7 @@ function untukMap(){
     fillOpacity: 0.35,
   });
   geofence.setMap(map);
+  lokasiSepedaInit();
 }
 
 function lokasiSepeda(){
@@ -231,6 +253,7 @@ function lokasiSepedaInit(){
         });
         bikelocation.push(bikelocationok);
       }
+      setInterval(lokasiSepeda,2000)
     }
     // else if(this.readyState != 4){
     //   document.getElementById("content").innerHTML = "loading"
