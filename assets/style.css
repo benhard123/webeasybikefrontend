@@ -56,13 +56,11 @@ h2 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 	margin-left: 10%;
 	margin-top:5%;
-	position:fixed;
 	
 }
 
 .map{
 	width:100%;
-	padding-top:25;
 }
 
 .mapisi{
@@ -163,7 +161,7 @@ h2 {
 
 .footerlatar{
 	background: #ffc26b;
-	height:37.5;
+	height:37.5px;
 	font-weight:900;
 	padding-left:20;
 	padding-top:5;
@@ -179,11 +177,11 @@ h2 {
 
 .tablatar{
 	background: linear-gradient(90deg, rgba(228,228,228,1) 35%, rgba(214,214,214,1) 76%);
-	height:37.5;
+	height:37.5px;
 	font-weight:900;
-	padding-left:20;
-	padding-top:5;
-	padding-bottom:5;
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
 	cursor: pointer;
 	
 }
@@ -205,11 +203,11 @@ h2 {
 
 .tabatas{
 	background: linear-gradient(90deg, rgba(228,228,228,1) 35%, rgba(214,214,214,1) 76%);
-	height:37.5;
+	height:37.5px;
 	font-weight:900;
-	padding-left:20;
-	padding-top:5;
-	padding-bottom:5;
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
 	cursor: pointer;
 }
 
@@ -241,7 +239,7 @@ h2 {
 }
 
 .pemisah{
-	height:5;
+	height:5px;
 	width:100%;
 	background-color:#ccc;
 }
@@ -538,7 +536,7 @@ input[type=text]:placeholder {
   }
   .latarmap{
     width: 95%;
-    margin-left: auto;
+    margin-left: 2%;
     margin-top: auto;
   }
 }
