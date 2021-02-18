@@ -2,7 +2,6 @@ let map;
 let bikelocation = [];
 
 initial()
-// setInterval(lokasiSepeda,2000)
 
 window.addEventListener('popstate', function(event) {
   initial()
@@ -28,7 +27,6 @@ function initial(){
   if(window.location.pathname == "/" ){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
     loadDoc(fungsi=untukMap)
-    // lokasiSepedaInit();
   }
   else if(window.location.pathname == "/login/"){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
@@ -59,10 +57,10 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
 		  acc[i].addEventListener("click", function() {
 			this.classList.toggle("active");
 			var panel = this.nextElementSibling;
-			if (panel.style.display === "block") {
-			  panel.style.display = "none";
+			if (panel.style.height === "") {
+			  panel.style.height = "500px";
 			} else {
-			  panel.style.display = "block";
+			  panel.style.height = "";
 			}
 		  });
 		}
