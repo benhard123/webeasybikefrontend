@@ -286,3 +286,33 @@ function loginfunction(){
   xhttp.send(JSON.stringify({username: document.getElementsByName("username")[0].value, password: document.getElementsByName("password")[0].value}));
   // alert(document.getElementsByName("username")[0].value + document.getElementsByName("password")[0].value)
 }
+
+function nampakregister() {
+  //Change css properties
+  loginBtn.classList.remove("active");
+  registerBtn.classList.add("active");  
+  formlogin.style.opacity = "0";
+  formregister.style.opacity = "100%";
+  formlogin.style.height = "0";	
+  formregister.style.height = "100%";
+  formContent.style.marginLeft = "-44%";
+  judul.style.marginLeft = "43%" ;
+  formFooter.style.height= "0" ;
+  formFooter.style.opacity= "0" ;
+  formFooter.style.display = "none" ;
+}      
+//Registration button is clicked
+
+function nampaklogin() {
+  loginBtn.classList.add("active");
+  registerBtn.classList.remove("active");
+  formregister.style.opacity = "0";
+  formlogin.style.opacity = "100%";
+  formregister.style.height = "0";
+  formlogin.style.height = "100%"; 
+  formContent.style.marginLeft = "30%";
+  judul.style.marginLeft = "3%" ;
+  formFooter.style.height= "100%" ;
+  formFooter.style.opacity= "100%" ;
+  formFooter.style.display = "block" ;
+}
