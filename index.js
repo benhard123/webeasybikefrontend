@@ -43,6 +43,28 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML = this.responseText;
       fungsi();
+      if(window.location.pathname == "/"){
+        // alert(document.cookie)
+        if(document.cookie.match(/^(.*;)?\s*jwt\s*=\s*[^;]+(.*)?$/)){
+          let tombolgn = document.getElementsByClassName("tombollogin")[0];
+          tombolgn.onclick = function () {
+            document.cookie="jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            let tombolgn = document.getElementsByClassName("tombollogin")[0];
+            tombolgn.style.color = "";
+            tombolgn.innerHTML = "Login";
+            let acc = document.getElementsByClassName("profil");
+	          for (let i = 0; i < acc.length; i++) {
+              acc[i].style.display="none";
+	          }
+          };
+          tombolgn.style.color = "white";
+          tombolgn.innerHTML = "Logout";
+          let acc = document.getElementsByClassName("profil");
+	        for (let i = 0; i < acc.length; i++) {
+            acc[i].style.display="block";
+	        }
+        }
+      }
     }
     else if(this.readyState != 4){
       document.getElementById("content").innerHTML = "loading"
@@ -50,20 +72,7 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     else{
       document.getElementById("content").innerHTML = "error";
     }
-    var acc = document.getElementsByClassName("accordion");
-		var i;
-		
-		for (i = 0; i < acc.length; i++) {
-		  acc[i].addEventListener("click", function() {
-			this.classList.toggle("active");
-			var panel = this.nextElementSibling;
-			if (panel.style.height === "") {
-			  panel.style.height = "500px";
-			} else {
-			  panel.style.height = "";
-			}
-		  });
-		}
+    pagebutton();
   };
   xhttp.open("GET", content, true);
   xhttp.send();
@@ -270,11 +279,17 @@ function initMap() {
 }
 
 function loginfunction(){
+  var passhash = CryptoJS.MD5(document.getElementById("password1").value).toString();
   var xhttp = new XMLHttpRequest();
   // xhttp.responseType = "json"
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      alert(JSON.stringify(JSON.parse(this.responseText)));
+      // alert(JSON.stringify(JSON.parse(this.responseText)));
+      let logindata = JSON.parse(this.responseText);
+      alert(logindata.jwt);
+      document.cookie = "jwt="+logindata.jwt;
+      window.location.pathname = "/";
+      initial(); 
     }
     else if(this.readyState == 4){
       alert(this.responseText);
@@ -283,8 +298,36 @@ function loginfunction(){
   xhttp.open("POST", "http://172.17.0.2:8000/login", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.setRequestHeader("Accept", "application/json")
-  xhttp.send(JSON.stringify({username: document.getElementsByName("username")[0].value, password: document.getElementsByName("password")[0].value}));
+  xhttp.send(JSON.stringify({username: document.getElementById("login").value, password: passhash}));
   // alert(document.getElementsByName("username")[0].value + document.getElementsByName("password")[0].value)
+}
+
+function pagebutton(){
+  let acc = document.getElementsByClassName("accordion");
+	let i;
+		
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].addEventListener("click", function() {
+		  this.classList.toggle("active");
+		  let panel = this.nextElementSibling;
+		  if (panel.style.height === "") {
+        if (this.classList.contains("tabatas")){
+          panel.style.height = "500px";
+         }
+        else{
+          if(window.matchMedia("(max-width: 500px)").matches){
+            panel.style.height = "300px";
+          }
+          else{
+            panel.style.height = "100px";
+          }
+        }
+      } 
+      else {
+		    panel.style.height = "";
+		  }
+	  });
+	}
 }
 
 function nampakregister() {
