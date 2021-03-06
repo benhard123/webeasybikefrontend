@@ -50,6 +50,7 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
           tombolgn.onclick = function () {
             document.cookie="jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
             let tombolgn = document.getElementsByClassName("tombollogin")[0];
+            tombolgn.onclick = bukalogin;
             tombolgn.style.color = "";
             tombolgn.innerHTML = "Login";
             let acc = document.getElementsByClassName("profil");
@@ -164,13 +165,6 @@ function untukMap(){
     })
   }
 
-  // const koordinatgeofence = [
-  //   { lat: -6.930246, lng: 107.774365 },
-  //   { lat: -6.928944, lng: 107.777785 },
-  //   { lat: -6.919930, lng: 107.774055 },
-  //   { lat: -6.921711, lng: 107.769723 },
-  //   { lat: -6.930246, lng: 107.774365  },
-  // ];
   const koordinatgeofence = [
     { lat: -6.932651, lng: 107.772106 },
     { lat: -6.932191, lng: 107.773204 },
@@ -178,9 +172,33 @@ function untukMap(){
     { lat: -6.931424, lng: 107.776048 },
     { lat: -6.931418, lng: 107.776363 },
     { lat: -6.931891, lng: 107.776472 },
-    { lat: -6.919930, lng: 107.774055 },
-    { lat: -6.921711, lng: 107.769723 },
-    { lat: -6.930406, lng: 107.773581 },
+    { lat: -6.931680, lng: 107.777202 },
+    { lat: -6.931374, lng: 107.777674 },
+    { lat: -6.930756, lng: 107.778274 },
+    { lat: -6.929845, lng: 107.778828 },
+    { lat: -6.928698, lng: 107.778869 },
+    { lat: -6.927363, lng: 107.778429 },
+    { lat: -6.926586, lng: 107.778096 },
+    { lat: -6.925641, lng: 107.777132 },
+    { lat: -6.924842, lng: 107.776576 },
+    { lat: -6.924700, lng: 107.775979 },
+    { lat: -6.923277, lng: 107.775454 },
+    { lat: -6.922336, lng: 107.774795 },
+    { lat: -6.921567, lng: 107.774395 },
+    { lat: -6.921150, lng: 107.774845 },
+    { lat: -6.920242, lng: 107.774638 },
+    { lat: -6.919546, lng: 107.773759 },
+    { lat: -6.919406, lng: 107.772430 },
+    { lat: -6.919537, lng: 107.771042 },
+    { lat: -6.920028, lng: 107.769949 },
+    { lat: -6.920234, lng: 107.769602 },
+    { lat: -6.921432, lng: 107.769658 },
+    { lat: -6.921602, lng: 107.769462 },
+    { lat: -6.921665, lng: 107.769304 },
+    { lat: -6.921920, lng: 107.769153 },
+    { lat: -6.922393, lng: 107.769152 },
+    { lat: -6.922599, lng: 107.769260 },
+    { lat: -6.930421, lng: 107.772756 },
     { lat: -6.930960, lng: 107.771675 },
     { lat: -6.932651, lng: 107.772106 },
   ];
@@ -197,19 +215,6 @@ function untukMap(){
 }
 
 function lokasiSepeda(){
-  const iconBase =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
-    const icons = {
-      parking: {
-        icon: iconBase + "parking_lot_maps.png",
-      },
-      library: {
-        icon: iconBase + "library_maps.png",
-      },
-      info: {
-        icon: iconBase + "info-i_maps.png",
-      },
-    };
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -234,19 +239,6 @@ function lokasiSepeda(){
 }
 
 function lokasiSepedaInit(){
-  const iconBase =
-    "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
-    const icons = {
-      parking: {
-        icon: iconBase + "parking_lot_maps.png",
-      },
-      library: {
-        icon: iconBase + "library_maps.png",
-      },
-      info: {
-        icon: iconBase + "info-i_maps.png",
-      },
-    };
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -255,7 +247,7 @@ function lokasiSepedaInit(){
       for (let i =0; i<hasil.length; i++){
         bikelocationok = new google.maps.Marker({
           position: new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude),
-          icon: icons["library"].icon,
+          icon: "/assets/bicycle_icon_135886.png",
           map: map,
         });
         bikelocation.push(bikelocationok);
@@ -313,7 +305,10 @@ function pagebutton(){
 		  if (panel.style.height === "") {
         if (this.classList.contains("tabatas")){
           panel.style.height = "500px";
-         }
+        }
+        else if (this.classList.contains("profil")){
+          panel.style.height = "200px";
+        }
         else{
           if(window.matchMedia("(max-width: 500px)").matches){
             panel.style.height = "300px";
