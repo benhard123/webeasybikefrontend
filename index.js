@@ -8,19 +8,11 @@ window.addEventListener('popstate', function(event) {
 }, false);
 
 function bukalogin(){
-  document.getElementsByClassName("latarmap")[0].classList.toggle("fadeOutUp");
-  setTimeout(()=>{
-    if(window.location.pathname == "/" ){
-      history.pushState("", "login", "login/");
-      document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
-      loadDoc()
-    }
-  },1000)
-  // if(window.location.pathname == "/" ){
-  //   history.pushState("", "login", "login/");
-  //   document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
-  //   loadDoc()
-  // }
+  if(window.location.pathname == "/" ){
+    history.pushState("", "login", "login/");
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
+    loadDoc()
+  }
 }
 
 function initial(){
@@ -73,7 +65,7 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     else{
       document.getElementById("content").innerHTML = "error";
     }
-    pagebutton();
+    // pagebutton();
   };
   xhttp.open("GET", content, true);
   xhttp.send();
@@ -294,36 +286,36 @@ function loginfunction(){
   // alert(document.getElementsByName("username")[0].value + document.getElementsByName("password")[0].value)
 }
 
-function pagebutton(){
-  let acc = document.getElementsByClassName("accordion");
-	let i;
+// function pagebutton(){
+//   let acc = document.getElementsByClassName("accordion");
+// 	let i;
 		
-	for (i = 0; i < acc.length; i++) {
-	  acc[i].addEventListener("click", function() {
-		  this.classList.toggle("active");
-		  let panel = this.nextElementSibling;
-		  if (panel.style.height === "") {
-        if (this.classList.contains("tabatas")){
-          panel.style.height = "500px";
-        }
-        else if (this.classList.contains("profil")){
-          panel.style.height = "200px";
-        }
-        else{
-          if(window.matchMedia("(max-width: 500px)").matches){
-            panel.style.height = "300px";
-          }
-          else{
-            panel.style.height = "100px";
-          }
-        }
-      } 
-      else {
-		    panel.style.height = "";
-		  }
-	  });
-	}
-}
+// 	for (i = 0; i < acc.length; i++) {
+// 	  acc[i].addEventListener("click", function() {
+// 		  this.classList.toggle("active");
+// 		  let panel = this.nextElementSibling;
+// 		  if (panel.style.height === "") {
+//         if (this.classList.contains("tabatas")){
+//           panel.style.height = "500px";
+//         }
+//         else if (this.classList.contains("profil")){
+//           panel.style.height = "200px";
+//         }
+//         else{
+//           if(window.matchMedia("(max-width: 500px)").matches){
+//             panel.style.height = "300px";
+//           }
+//           else{
+//             panel.style.height = "100px";
+//           }
+//         }
+//       } 
+//       else {
+// 		    panel.style.height = "";
+// 		  }
+// 	  });
+// 	}
+// }
 
 function nampakregister() {
   //Change css properties

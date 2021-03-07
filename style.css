@@ -25,7 +25,8 @@ body {
   height: 100%;
 }
 .panel{
-  height:0px;
+  width: 1500px;
+  height:800px;
 }
 .Tombolheader{
   float: right; 
