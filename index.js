@@ -1,5 +1,6 @@
 let map;
 let bikelocation = [];
+let folderdir=""
 
 initial()
 
@@ -8,8 +9,8 @@ window.addEventListener('popstate', function(event) {
 }, false);
 
 function bukalogin(){
-  if(window.location.pathname != "/login/"){
-    history.pushState("", "login", "/login/");
+  if(window.location.pathname != folderdir+"/login/"){
+    history.pushState("", "login", folderdir+"/login/");
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     loadDoc()
   }
@@ -26,11 +27,11 @@ function showMenu(){
 }
 
 function initial(){
-  if(window.location.pathname == "/" ){
+  if(window.location.pathname == folderdir+"/" ){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
     loadDoc(fungsi=untukMap)
   }
-  else if(window.location.pathname == "/login/"){
+  else if(window.location.pathname == folderdir+"/login/"){
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     loadDoc()
   }
@@ -45,7 +46,7 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML = this.responseText;
       fungsi();
-      if(window.location.pathname == "/"){
+      if(window.location.pathname == folderdir+"/"){
         // alert(document.cookie)
         if(document.cookie.match(/^(.*;)?\s*jwt\s*=\s*[^;]+(.*)?$/)){
           let tombolgn = document.getElementsByClassName("tombollogin")[0];
@@ -235,7 +236,7 @@ function lokasiSepeda(){
   };
   xhttp.open("GET", "http://172.17.0.2:8000/gpsdata", true);
   xhttp.setRequestHeader("Accept", "application/json");
-  if(window.location.pathname == "/"){
+  if(window.location.pathname == folderdir+"/"){
     xhttp.send();
   }
 }
@@ -282,7 +283,7 @@ function loginfunction(){
       let logindata = JSON.parse(this.responseText);
       alert(logindata.jwt);
       document.cookie = "jwt="+logindata.jwt;
-      window.location.pathname = "/";
+      window.location.pathname = folderdir+"/";
       initial(); 
     }
     else if(this.readyState == 4){
