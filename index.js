@@ -21,7 +21,7 @@ function showMenu(){
     menubtn.style.display = "block"
   }
   else{
-    menubtn.style.display = "none"
+    menubtn.style.display = ""
   }
 }
 
