@@ -1,56 +1,37 @@
-			<style>
-				input::-webkit-outer-spin-button,
-				input::-webkit-inner-spin-button {
-	  				-webkit-appearance: none;
-					margin: 0;
-				}
-	
-				/* Firefox */
-				input[type=number] {
-	  				-moz-appearance: textfield;
-				}
-			</style>
-			<div class="latar fadeInDown" >
-				<span id="judul" class="judul"> EASY BIKE UNPAD </SPAN>
+<div class="latarmap">
+	<div class="panel selainmap" id="login">	
+		<div id="formContent">		
+			<div id="formlogin">
+				<div class="tablatar ">
+					Masuk
+				</div>
+				<div class="inputmasuk">
+			   		<form>
+				  		<input type="text" id="login" name="login" placeholder="login">
+				  		<input type="password" id="password1"  name="password1" placeholder="password">
+				  		<input type="button" class="fadeIn fourth" value="Masuk" onclick="loginfunction()">
+				  		<!-- <input type="submit" value="Masuk"> -->
+					</form>
+				</div>
+				<h4>Belum punya akun ? <a onclick="nampakregister()"> Daftar </a></h4>
 			</div>
-			<div class="wrapper fadeInDown">
-				<div id="formContent">
-					<!-- Tabs Titles -->
-					<h2 class="loginbtn active"  id="loginBtn"><a onclick="nampaklogin()"> Login </h2></a>
-					<h2 class="registerbtn" id="registerBtn"><a onclick="nampakregister()"> Register </h2></a>
-					<div id="formlogin">
-						<form>
-							<input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-							<input type="password" id="password1" class="fadeIn third" name="password1" placeholder="password">
-							<input type="button" class="fadeIn fourth" value="Log In" onclick="loginfunction()">
-						</form>
-					</div>
-					<div id="formregister">
-						<form>
-							<input type="text" id="Username" class="fadeIn second" name="Username" placeholder="Username">
-							<input type="text" id="Name" class="fadeIn second" name="Name" placeholder="Nama">
-							<input type="number" id="NPM" class="fadeIn second" name="NPM" placeholder="NPM">
-							<input type="text" id="Fakultas" class="fadeIn second" name="Fakultas" placeholder="Fakultas">
-							<input type="text" id="Jurusan" class="fadeIn second" name="Jurusan" placeholder="Jurusan">
-							<input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-							<div class="spasi"></div>
-							<input type="button" class="fadeIn fourth" value="Register">
-						</form>
-					</div>
-					<!-- Remind Passowrd -->
-					<div id="formFooter">
-						<a class="underlineHover"  href="#">Forgot Password?</a>
-					</div>
+			<div id="formregister">
+				<div class="tablatar ">
+					Daftar	
+				</div>
+				<div class="input">
+			 		<form>
+						<input type="text" id="Name" name="Name" placeholder="Nama">
+						<input type="number" id="NPM"  name="NPM" placeholder="NPM">
+						<input type="text" id="Fakultas" name="Fakultas" placeholder="Fakultas">
+						<input type="text" id="Jurusan" name="Jurusan" placeholder="Jurusan">
+						<input type="password" id="password" name="login" placeholder="password">
+						<div class="spasi"></div>
+						<input type="submit"  value="Register">
+					</form>
+				<h4>Sudah punya akun ?  <a onclick="nampaklogin()"> Masuk</a></h4>
 				</div>
 			</div>
-			<!-- <div class="login">
-				<div class="login_title">Login</div>
-				<br>
-				<div class="login_name">Username</div>
-				<input type="text" name="username" class="username"></input>
-				<div class="login_name">Password</div>
-				<input type="password" name="password" class="password"></input>
-				<br><br>
-				<button onclick="loginfunction()" class="loginbutton">Masuk</button>
-			</div> -->
-
+	 	</div>
+	</div>
+</div>

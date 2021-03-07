@@ -8,10 +8,20 @@ window.addEventListener('popstate', function(event) {
 }, false);
 
 function bukalogin(){
-  if(window.location.pathname == "/" ){
-    history.pushState("", "login", "login/");
+  if(window.location.pathname != "/login/"){
+    history.pushState("", "login", "/login/");
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     loadDoc()
+  }
+}
+
+function showMenu(){
+  let menubtn = document.getElementsByClassName("menu")[0]
+  if(menubtn.style.display == "" || menubtn.style.display == "none"){
+    menubtn.style.display = "block"
+  }
+  else{
+    menubtn.style.display = "none"
   }
 }
 
@@ -41,7 +51,7 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
           let tombolgn = document.getElementsByClassName("tombollogin")[0];
           tombolgn.onclick = function () {
             document.cookie="jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-            let tombolgn = document.getElementsByClassName("tombollogin")[0];
+            let tombolgn = document.getElementsByClassName("masuk")[0];
             tombolgn.onclick = bukalogin;
             tombolgn.style.color = "";
             tombolgn.innerHTML = "Login";
@@ -317,32 +327,25 @@ function loginfunction(){
 // 	}
 // }
 
-function nampakregister() {
-  //Change css properties
-  loginBtn.classList.remove("active");
-  registerBtn.classList.add("active");  
+function nampakregister() {      
   formlogin.style.opacity = "0";
-  formregister.style.opacity = "100%";
-  formlogin.style.height = "0";	
+  formregister.style.opacity= "100%";
+  formlogin.style.height = "0";
   formregister.style.height = "100%";
-  formContent.style.marginLeft = "-44%";
-  judul.style.marginLeft = "43%" ;
-  formFooter.style.height= "0" ;
-  formFooter.style.opacity= "0" ;
-  formFooter.style.display = "none" ;
+  formlogin.style.width = "0";
+  formregister.style.width = "100%";
+  formlogin.style.display = "none";
+  formregister.style.display = "block";
 }      
-//Registration button is clicked
-
+  
+    
 function nampaklogin() {
-  loginBtn.classList.add("active");
-  registerBtn.classList.remove("active");
   formregister.style.opacity = "0";
   formlogin.style.opacity = "100%";
   formregister.style.height = "0";
   formlogin.style.height = "100%"; 
-  formContent.style.marginLeft = "30%";
-  judul.style.marginLeft = "3%" ;
-  formFooter.style.height= "100%" ;
-  formFooter.style.opacity= "100%" ;
-  formFooter.style.display = "block" ;
-}
+  formlogin.style.width = "100%";
+  formregister.style.width = "0";
+  formlogin.style.display = "block";
+  formregister.style.display = "none";
+}      

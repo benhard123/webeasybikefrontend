@@ -8,7 +8,7 @@ font-family: 'Inter', sans-serif;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   height: 100vh;
   margin:0 0 0 0;
 }
@@ -192,7 +192,7 @@ h2 {
     user-select: none;
 	cursor: pointer;
 	margin-top:10px;
-	font-weight:500px;
+	font-weight:500;
 	text-align:center;
 	padding-top:10px;
 	justify-content:center;
@@ -547,4 +547,37 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 625px){
+  /* .judul{
+    display: none;
+  } */
+  .atas{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .latar{
+    width: 85%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+  .tablatar{
+    height: auto;
+    font-size: 20px;
+  }
+  /* .judul1{
+    font-size:15px;
+	  margin-left:10px;
+  } */
+  .tombollogin{
+    font-size:15px;
+    height: 50px;
+  }
+  .latarmap{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: auto;
+  }
 }
