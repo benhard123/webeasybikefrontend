@@ -1,16 +1,36 @@
 let map;
 let bikelocation = [];
-let folderdir=""
+let folderdir="";
+let apihost="http://172.17.0.2:8000"
 
-initial()
+initial();
 
 window.addEventListener('popstate', function(event) {
-  initial()
+  initial();
 }, false);
+
+function buttonactivechanger(){
+  let tombolatas = document.getElementsByClassName("tombolatas");
+  if(window.location.pathname == folderdir+"/" ){
+    tombolatas[0].classList.remove("active");
+    tombolatas[1].classList.remove("active");
+    tombolatas[2].classList.remove("active");
+    tombolatas[3].classList.remove("active");
+    tombolatas[4].className += " active";
+  }
+  else if(window.location.pathname == folderdir+"/login/"){
+    tombolatas[0].className += " active";
+    tombolatas[1].classList.remove("active");
+    tombolatas[2].classList.remove("active");
+    tombolatas[3].classList.remove("active");
+    tombolatas[4].classList.remove("active");
+  }
+}
 
 function bukalogin(){
   if(window.location.pathname != folderdir+"/login/"){
     history.pushState("", "login", folderdir+"/login/");
+    buttonactivechanger();
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     loadDoc()
   }
@@ -28,11 +48,11 @@ function showMenu(){
 
 function initial(){
   if(window.location.pathname == folderdir+"/" ){
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad";
     loadDoc(fungsi=untukMap)
   }
   else if(window.location.pathname == folderdir+"/login/"){
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login";
     loadDoc()
   }
   else{
@@ -46,29 +66,32 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML = this.responseText;
       fungsi();
+      // Check Login
       if(window.location.pathname == folderdir+"/"){
         // alert(document.cookie)
         if(document.cookie.match(/^(.*;)?\s*jwt\s*=\s*[^;]+(.*)?$/)){
-          let tombolgn = document.getElementsByClassName("tombollogin")[0];
+          let tombolgn = document.getElementsByClassName("masuk")[0];
           tombolgn.onclick = function () {
             document.cookie="jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
             let tombolgn = document.getElementsByClassName("masuk")[0];
             tombolgn.onclick = bukalogin;
             tombolgn.style.color = "";
             tombolgn.innerHTML = "Login";
-            let acc = document.getElementsByClassName("profil");
-	          for (let i = 0; i < acc.length; i++) {
-              acc[i].style.display="none";
-	          }
+            // let acc = document.getElementsByClassName("profil");
+	          // for (let i = 0; i < acc.length; i++) {
+            //   acc[i].style.display="none";
+	          // }
           };
           tombolgn.style.color = "white";
           tombolgn.innerHTML = "Logout";
-          let acc = document.getElementsByClassName("profil");
-	        for (let i = 0; i < acc.length; i++) {
-            acc[i].style.display="block";
-	        }
+          // let acc = document.getElementsByClassName("profil");
+	        // for (let i = 0; i < acc.length; i++) {
+          //   acc[i].style.display="block";
+	        // }
         }
       }
+      // Selector menu
+      buttonactivechanger();
     }
     else if(this.readyState != 4){
       document.getElementById("content").innerHTML = "loading"
@@ -234,7 +257,7 @@ function lokasiSepeda(){
     //   document.getElementById("content").innerHTML = "error";
     // }
   };
-  xhttp.open("GET", "http://172.17.0.2:8000/gpsdata", true);
+  xhttp.open("GET", apihost+"/gpsdata", true);
   xhttp.setRequestHeader("Accept", "application/json");
   if(window.location.pathname == folderdir+"/"){
     xhttp.send();
@@ -250,7 +273,7 @@ function lokasiSepedaInit(){
       for (let i =0; i<hasil.length; i++){
         bikelocationok = new google.maps.Marker({
           position: new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude),
-          icon: "/assets/bicycle_icon_135886.png",
+          icon: folderdir+"/assets/bicycle_icon_135886.png",
           map: map,
         });
         bikelocation.push(bikelocationok);
@@ -264,7 +287,7 @@ function lokasiSepedaInit(){
     //   document.getElementById("content").innerHTML = "error";
     // }
   };
-  xhttp.open("GET", "http://172.17.0.2:8000/gpsdata", true);
+  xhttp.open("GET", apihost+"/gpsdata", true);
   xhttp.setRequestHeader("Accept", "application/json");
   xhttp.send();
 }
@@ -275,6 +298,7 @@ function initMap() {
 
 function loginfunction(){
   var passhash = CryptoJS.MD5(document.getElementById("password1").value).toString();
+  alert(document.getElementById("login").value+passhash)
   var xhttp = new XMLHttpRequest();
   // xhttp.responseType = "json"
   xhttp.onreadystatechange = function () {
@@ -290,7 +314,7 @@ function loginfunction(){
       alert(this.responseText);
     }
   };
-  xhttp.open("POST", "http://172.17.0.2:8000/login", true);
+  xhttp.open("POST", apihost+"/login", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.setRequestHeader("Accept", "application/json")
   xhttp.send(JSON.stringify({username: document.getElementById("login").value, password: passhash}));
