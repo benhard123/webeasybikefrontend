@@ -22,6 +22,7 @@ body {
   z-index: 1000;
 } */
 #content{
+  margin-top: 60px;
   height: 100%;
 }
 .panel{
