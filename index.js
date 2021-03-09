@@ -26,6 +26,27 @@ function buttonactivechanger(){
     tombolatas[3].classList.remove("active");
     tombolatas[4].classList.remove("active");
   }
+  else if(window.location.pathname == folderdir+"/kontak/"){
+    tombolatas[0].classList.remove("active");
+    tombolatas[1].className += " active";
+    tombolatas[2].classList.remove("active");
+    tombolatas[3].classList.remove("active");
+    tombolatas[4].classList.remove("active");
+  }
+  else if(window.location.pathname == folderdir+"/fitur/"){
+    tombolatas[0].classList.remove("active");
+    tombolatas[1].classList.remove("active");
+    tombolatas[2].className += " active";
+    tombolatas[3].classList.remove("active");
+    tombolatas[4].classList.remove("active");
+  }
+  else if(window.location.pathname == folderdir+"/tentang/"){
+    tombolatas[0].classList.remove("active");
+    tombolatas[1].classList.remove("active");
+    tombolatas[2].classList.remove("active");
+    tombolatas[3].className += " active";
+    tombolatas[4].classList.remove("active");
+  }
 }
 
 function bukalogin(){
@@ -33,7 +54,7 @@ function bukalogin(){
     history.pushState("", "login", folderdir+"/login/");
     buttonactivechanger();
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
-    loadDoc()
+    initial();
   }
 }
 
@@ -41,8 +62,7 @@ function bukaberanda(){
   if(window.location.pathname != folderdir+"/"){
     history.pushState("", "beranda", folderdir+"/");
     buttonactivechanger();
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
-    loadDoc()
+    initial();
   }
 }
 
@@ -50,8 +70,7 @@ function bukafitur(){
   if(window.location.pathname != folderdir+"/fitur/"){
     history.pushState("", "fitur", folderdir+"/fitur/");
     buttonactivechanger();
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
-    loadDoc()
+    initial();
   }
 }
 
@@ -59,8 +78,7 @@ function bukakontak(){
   if(window.location.pathname != folderdir+"/kontak/"){
     history.pushState("", "kontak", folderdir+"/kontak/");
     buttonactivechanger();
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
-    loadDoc()
+    initial();
   }
 }
 
@@ -68,8 +86,7 @@ function bukatentang(){
   if(window.location.pathname != folderdir+"/tentang/"){
     history.pushState("", "tentang", folderdir+"/tentang/");
     buttonactivechanger();
-    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
-    loadDoc()
+    initial();
   }
 }
 
@@ -93,6 +110,7 @@ function initial(){
     loadDoc()
   }
   else{
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad";
     loadDoc()
   }
 }
