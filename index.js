@@ -303,9 +303,9 @@ function lokasiSepeda(){
       console.log(JSON.parse(this.responseText))
       for (let i =0; i<hasil.length; i++){
         bikelocation[i].setPosition(new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude))
-        bikelocation[i].addListener("click", () => {
-          bikeinfo[i].open(map, bikelocation[i]);
-        })
+        // bikelocation[i].addListener("click", () => {
+        //   bikeinfo[i].open(map, bikelocation[i]);
+        // })
       }
     }
     // else if(this.readyState != 4){
@@ -330,7 +330,7 @@ function lokasiSepedaInit(){
       console.log(JSON.parse(this.responseText))
       for (let i =0; i<hasil.length; i++){
         let bikeinfok = new google.maps.InfoWindow({
-          content: '<h1 class="Judul_peta">'+i+'</h1>',
+          content: '<h1 class="Judul_peta">'+hasil[i].bike_id+'</h1>',
           // position: new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude)
         });
         bikeinfo.push(bikeinfok);
@@ -364,14 +364,14 @@ function initMap() {
 
 function loginfunction(){
   var passhash = CryptoJS.MD5(document.getElementById("password1").value).toString();
-  alert(document.getElementById("login").value+passhash)
+  // alert(document.getElementById("login").value+passhash)
   var xhttp = new XMLHttpRequest();
   // xhttp.responseType = "json"
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert(JSON.stringify(JSON.parse(this.responseText)));
       let logindata = JSON.parse(this.responseText);
-      alert(logindata.jwt);
+      // alert(logindata.jwt);
       document.cookie = "jwt="+logindata.jwt;
       window.location.pathname = folderdir+"/";
       initial(); 
