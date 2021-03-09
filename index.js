@@ -37,6 +37,42 @@ function bukalogin(){
   }
 }
 
+function bukaberanda(){
+  if(window.location.pathname != folderdir+"/"){
+    history.pushState("", "beranda", folderdir+"/");
+    buttonactivechanger();
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
+    loadDoc()
+  }
+}
+
+function bukafitur(){
+  if(window.location.pathname != folderdir+"/fitur/"){
+    history.pushState("", "fitur", folderdir+"/fitur/");
+    buttonactivechanger();
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
+    loadDoc()
+  }
+}
+
+function bukakontak(){
+  if(window.location.pathname != folderdir+"/kontak/"){
+    history.pushState("", "kontak", folderdir+"/kontak/");
+    buttonactivechanger();
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
+    loadDoc()
+  }
+}
+
+function bukatentang(){
+  if(window.location.pathname != folderdir+"/tentang/"){
+    history.pushState("", "tentang", folderdir+"/tentang/");
+    buttonactivechanger();
+    document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad"
+    loadDoc()
+  }
+}
+
 function showMenu(){
   let menubtn = document.getElementsByClassName("menu")[0]
   if(menubtn.style.display == "" || menubtn.style.display == "none"){
