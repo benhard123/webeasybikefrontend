@@ -1,5 +1,6 @@
 let map;
 let bikelocation = [];
+let bikeinfo = [];
 let folderdir="";
 let apihost="http://172.17.0.2:8000"
 
@@ -271,12 +272,20 @@ function lokasiSepedaInit(){
       let hasil = JSON.parse(this.responseText)
       console.log(JSON.parse(this.responseText))
       for (let i =0; i<hasil.length; i++){
+        let bikeinfok = new google.maps.InfoWindow({
+          content: '<h1 class="Judul_peta">'+i+'</h1>',
+          // position: new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude)
+        });
+        bikeinfo.push(bikeinfok);
         bikelocationok = new google.maps.Marker({
           position: new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude),
           icon: folderdir+"/assets/bicycle_icon_135886.png",
           map: map,
         });
         bikelocation.push(bikelocationok);
+        bikelocation[i].addListener("click", () => {
+          bikeinfo[i].open(map, bikelocation[i]);
+        })
       }
       setInterval(lokasiSepeda,2000)
     }
