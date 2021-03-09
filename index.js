@@ -249,6 +249,9 @@ function lokasiSepeda(){
       console.log(JSON.parse(this.responseText))
       for (let i =0; i<hasil.length; i++){
         bikelocation[i].setPosition(new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude))
+        bikelocation[i].addListener("click", () => {
+          bikeinfo[i].open(map, bikelocation[i]);
+        })
       }
     }
     // else if(this.readyState != 4){
