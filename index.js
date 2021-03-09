@@ -52,7 +52,6 @@ function buttonactivechanger(){
 function bukalogin(){
   if(window.location.pathname != folderdir+"/login/"){
     history.pushState("", "login", folderdir+"/login/");
-    buttonactivechanger();
     document.getElementsByTagName("title")[0].innerText = "Easy Bike Unpad - Login"
     initial();
   }
@@ -61,7 +60,6 @@ function bukalogin(){
 function bukaberanda(){
   if(window.location.pathname != folderdir+"/"){
     history.pushState("", "beranda", folderdir+"/");
-    buttonactivechanger();
     initial();
   }
 }
@@ -69,7 +67,6 @@ function bukaberanda(){
 function bukafitur(){
   if(window.location.pathname != folderdir+"/fitur/"){
     history.pushState("", "fitur", folderdir+"/fitur/");
-    buttonactivechanger();
     initial();
   }
 }
@@ -77,7 +74,6 @@ function bukafitur(){
 function bukakontak(){
   if(window.location.pathname != folderdir+"/kontak/"){
     history.pushState("", "kontak", folderdir+"/kontak/");
-    buttonactivechanger();
     initial();
   }
 }
@@ -85,7 +81,6 @@ function bukakontak(){
 function bukatentang(){
   if(window.location.pathname != folderdir+"/tentang/"){
     history.pushState("", "tentang", folderdir+"/tentang/");
-    buttonactivechanger();
     initial();
   }
 }
@@ -120,7 +115,12 @@ function loadDoc(fungsi=null, content = "content.html?dev="+ Math.floor(Math.ran
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML = this.responseText;
-      fungsi();
+      try{
+        fungsi();
+      }
+      catch(err){
+
+      }
       // Check Login
       if(window.location.pathname == folderdir+"/"){
         // alert(document.cookie)
@@ -303,9 +303,9 @@ function lokasiSepeda(){
       console.log(JSON.parse(this.responseText))
       for (let i =0; i<hasil.length; i++){
         bikelocation[i].setPosition(new google.maps.LatLng(hasil[i].latitude,hasil[i].longitude))
-        // bikelocation[i].addListener("click", () => {
-        //   bikeinfo[i].open(map, bikelocation[i]);
-        // })
+        bikelocation[i].addListener("click", () => {
+          bikeinfo[i].open(map, bikelocation[i]);
+        })
       }
     }
     // else if(this.readyState != 4){
@@ -323,6 +323,8 @@ function lokasiSepeda(){
 }
 
 function lokasiSepedaInit(){
+  bikelocation = [];
+  bikeinfo = [];
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
