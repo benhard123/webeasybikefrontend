@@ -59,6 +59,9 @@ body {
 	margin-left:10px;
 	margin-right:10px;
 }
+.sidenav .closebtn {
+  display: none;
+}
 /* #content{
   padding-top: 70px;
   height: 100%
@@ -82,20 +85,35 @@ body {
   }
   .menu{
     display: none;
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    top: 0px;
+    right: 0;
     width: 130px;
-    margin-left: 65%;
+    /* margin-left: 65%; */
     background-color: white;
     position: absolute;
     padding-bottom: 15px;
+    padding-top: 40px;
+      -webkit-box-shadow: 0 5px 5px 0 rgba(9,9,9,0.4);
+    box-shadow: 0 5px 5px 0 rgba(9,9,9,0.4);
     z-index: 99;
   }
   .menu .tombolatas{
-    border-top-style: solid;
+    padding: 8px 8px 8px 0px;
+    text-decoration: none;
+    /* font-size: 25px; */
+    color: black;
+    display: block;
+    transition: 0.3s;
+    /* border-top-style: solid; */
     margin-left: 0px;
     margin-right: 0px;
     width: 130px;
     text-align: center;
+  }
+  .menu .active{
+    color: white;
+    background-color:#75d6f6;
   }
   .menu .tombolatas.masuk{
     margin-left: 10px;
@@ -104,6 +122,14 @@ body {
     margin-top: 0px;
     width: 110px;
     text-align: center;
+  }
+  .menu .closebtn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 25px;
+    margin-left: 40px;
   }
   /* #map {
     height: 80%;

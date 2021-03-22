@@ -342,9 +342,9 @@ function lokasiSepedaInit(){
           map: map,
         });
         bikelocation.push(bikelocationok);
-        bikelocation[i].addListener("click", () => {
-          bikeinfo[i].open(map, bikelocation[i]);
-        })
+        // bikelocation[i].addListener("click", () => {
+        //   bikeinfo[i].open(map, bikelocation[i]);
+        // })
       }
       setInterval(lokasiSepeda,2000)
     }
