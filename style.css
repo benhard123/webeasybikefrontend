@@ -1,18 +1,18 @@
 /* Always set the map height explicitly to define the size of the div element that contains the map. */
-#map {
+/* #map {
   height: 60%;
   width: 80%;
-}
+} */
 
 /* Optional: Makes the sample page fill the window. */
-html,
+/* html,
 body {
   font-family: Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-header{
+} */
+/* header{
   background-color: black;
   color: white;
   position: fixed;
@@ -20,20 +20,56 @@ header{
   height: 70px;
   width: 100%;
   z-index: 1000;
+} */
+#content{
+  margin-top: 60px;
+  height: 100%;
+}
+.panel{
+  width: 1500px;
+  height:800px;
 }
 .Tombolheader{
   float: right; 
   padding: 1%; 
   padding-top: 20px;
 }
-#content{
+.tombolmenu{
+  display: none;
+  text-align: center;
+  border-radius:20px;
+	background-color:#75d6f6;
+	color:white;
+	width:110px;
+	height:35px;
+	padding-top:10px;
+  display: hidden;
+  float:right;
+	font-size:15px;
+	webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	cursor: pointer;
+	margin-top:10px;
+	font-weight:500;
+	justify-content:center;
+	margin-left:10px;
+	margin-right:10px;
+}
+.sidenav .closebtn {
+  display: none;
+}
+/* #content{
   padding-top: 70px;
   height: 100%
-}
-.login{
+} */
+/* .login{
   margin: auto;
   margin-top: 10%;
-  /* width: 30%; */
+  width: 30%;
   width: 300px;
   border: 3px solid green;
   border-radius: 20px;
@@ -41,23 +77,74 @@ header{
 }
 .loginbutton{
   margin-left: 80%;
-}
+} */
 
-@media screen and (max-width: 500px){
-  #map {
+@media screen and (max-width: 700px){
+  .tombolmenu{
+    display: block;
+  }
+  .menu{
+    display: none;
+    /* margin-top: 60px; */
+    top: 0px;
+    right: 0;
+    width: 130px;
+    /* margin-left: 65%; */
+    background-color: white;
+    position: absolute;
+    padding-bottom: 15px;
+    padding-top: 40px;
+      -webkit-box-shadow: 0 5px 5px 0 rgba(9,9,9,0.4);
+    box-shadow: 0 5px 5px 0 rgba(9,9,9,0.4);
+    z-index: 99;
+  }
+  .menu .tombolatas{
+    padding: 8px 8px 8px 0px;
+    text-decoration: none;
+    /* font-size: 25px; */
+    color: black;
+    display: block;
+    transition: 0.3s;
+    /* border-top-style: solid; */
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 130px;
+    text-align: center;
+  }
+  .menu .active{
+    color: white;
+    background-color:#75d6f6;
+  }
+  .menu .tombolatas.masuk{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: none;
+    margin-top: 0px;
+    width: 110px;
+    text-align: center;
+  }
+  .menu .closebtn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 25px;
+    margin-left: 40px;
+  }
+  /* #map {
     height: 80%;
     width: 90%;
   }
   header{
     height: 60px;
-  }
-  #content{
+  } */
+  /* #content{
     padding-top: 60px;
-  }
-  .login{
+  } */
+  /* .login{
     margin-top: 40%;
     width: 80%;
-  }
+  } */
   /* .Judul_peta{
     font-size: 9px;
   } */

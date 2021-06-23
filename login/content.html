@@ -1,11 +1,38 @@
-			<div class="login">
-				<div class="login_title">Login</div>
-				<br>
-				<div class="login_name">Username</div>
-				<input type="text" name="username" class="username"></input>
-				<div class="login_name">Password</div>
-				<input type="password" name="password" class="password"></input>
-				<br><br>
-				<button onclick="loginfunction()" class="loginbutton">Masuk</button>
+<div class="latarmap">
+	<div class="panel selainmap">	
+		<div id="formContent">		
+			<div id="formlogin">
+				<div class="tablatar ">
+					Masuk
+				</div>
+				<div class="inputmasuk">
+			   		<form>
+				  		<input type="text" id="login" name="login" placeholder="login">
+				  		<input type="password" id="password1"  name="password1" placeholder="password">
+				  		<input type="button" class="fadeIn fourth" value="Masuk" onclick="loginfunction()">
+				  		<!-- <input type="submit" value="Masuk"> -->
+					</form>
+				</div>
+				<h4>Belum punya akun ? <a onclick="nampakregister()"> Daftar </a></h4>
 			</div>
-
+			<div id="formregister">
+				<div class="tablatar ">
+					Daftar	
+				</div>
+				<div class="input">
+			 		<form>
+						<input type="text" id="Name" name="Name" placeholder="Nama">
+						<input type="number" id="NPM"  name="NPM" placeholder="NPM">
+						<input type="text" id="Fakultas" name="Fakultas" placeholder="Fakultas">
+						<input type="text" id="Jurusan" name="Jurusan" placeholder="Jurusan">
+						<input type="text" id="email" name="email" placeholder="E-mail">
+						<input type="password" id="password" name="password" placeholder="password">
+						<div class="spasi"></div>
+						<input type="submit"  value="Register">
+					</form>
+				<h4>Sudah punya akun ?  <a onclick="nampaklogin()"> Masuk</a></h4>
+				</div>
+			</div>
+	 	</div>
+	</div>
+</div>
