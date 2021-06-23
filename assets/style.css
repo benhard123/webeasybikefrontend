@@ -418,7 +418,7 @@ h2 {
 
 .panel {  
   background-color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .selainmap{
